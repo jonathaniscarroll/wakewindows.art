@@ -42,7 +42,21 @@
       background-color: #fff;
     }
 
+    @media (min-aspect-ratio: .1) {
+      #unity-canvas {
+        width: auto;
+        height: 100%;
+        aspect-ratio: .1;
+      }
+    }
 
+    @media (max-aspect-ratio: 3.0) {
+      #unity-canvas {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3.0;
+      }
+    }
 
     #unity-loading-container {
       position: absolute;
@@ -121,8 +135,8 @@
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if(isMobile) {
       // Define a maximum pixel ratio for mobile to avoid rendering at too high resolutions
-      const maxPixelRatioMobile = 2.0;
-      config.devicePixelRatio = Math.min(window.devicePixelRatio, maxPixelRatioMobile);
+      // const maxPixelRatioMobile = 2.0;
+      // config.devicePixelRatio = Math.min(window.devicePixelRatio, maxPixelRatioMobile);
     }
 
     var canvas = document.querySelector("#unity-canvas");
