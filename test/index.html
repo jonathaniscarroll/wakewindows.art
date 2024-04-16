@@ -17,10 +17,10 @@
     }
 
     body {
-      height: 100vh;
+      height: 100%;
       /* fix mobile viewport menu bar on iOS */
       height: -webkit-fill-available;
-      width: 100vw;
+      width: 100%;
       text-align: center;
     }
 
@@ -42,21 +42,7 @@
       background-color: #fff;
     }
 
-    @media (min-aspect-ratio: .1) {
-      #unity-canvas {
-        width: auto;
-        height: 100%;
-        aspect-ratio: .1;
-      }
-    }
 
-    @media (max-aspect-ratio: 3.0) {
-      #unity-canvas {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 3.0;
-      }
-    }
 
     #unity-loading-container {
       position: absolute;
