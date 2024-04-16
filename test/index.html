@@ -143,6 +143,19 @@
       });
     };
     document.body.appendChild(script);
+
+        // Function to resize the canvas when window size/orientation changes
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    // Initial call to resizeCanvas
+    resizeCanvas();
+
+    // Event listener for window resize/orientation change
+    window.addEventListener("resize", resizeCanvas);
+    
   </script>
   <!-- Parse Unity rich text to render stylized browser console logs -->
   <script src="./pretty-console.js"></script>
