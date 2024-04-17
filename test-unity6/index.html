@@ -33,9 +33,29 @@
         companyName: "DefaultCompany",
         productName: "Wake Windows",
         productVersion: "0.1",
-        matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        matchWebGLToCanvasSize: true, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
+
+       // Function to resize the canvas to fit the window while maintaining aspect ratio
+    function resizeCanvas() {
+      var maxWidth = window.innerWidth;
+      var maxHeight = window.innerHeight;
+
+      var widthRatio = maxWidth / canvas.width;
+      var heightRatio = maxHeight / canvas.height;
+
+      var scale = Math.min(widthRatio, heightRatio);
+
+      canvas.style.width = canvas.width * scale + "px";
+      canvas.style.height = canvas.height * scale + "px";
+    }
+
+    // Initial call to resizeCanvas
+    resizeCanvas();
+
+    // Event listener for window resize/orientation change
+    window.addEventListener("resize", resizeCanvas);
     </script>
   </body>
 </html>
