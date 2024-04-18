@@ -4,9 +4,9 @@
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/wake-experimental.loader.js";
     var config = {
-        dataUrl: buildUrl + "/wake-experimental.data",
-        frameworkUrl: buildUrl + "/wake-experimental.framework.js",
-        codeUrl: buildUrl + "/wake-experimental.wasm",
+        dataUrl: buildUrl + "/wake-experimental.data.gz",
+        frameworkUrl: buildUrl + "/wake-experimental.framework.js.gz",
+        codeUrl: buildUrl + "/wake-experimental.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Wake Windows",
