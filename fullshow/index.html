@@ -7,18 +7,23 @@
     <title>Wake Windows: The Witching Hour</title>
     <style>
       html, body {
-        width: 100%;
-        height: 100%;
+        width: 100vw; /* Use vw unit to cover viewport width */
+        height: 100vh; /* Use vh unit to cover viewport height */
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        overflow: hidden; /* Ensures no scroll bars appear */
+        display: flex; /* Uses flexbox to ensure children stretch */
+        align-items: stretch; /* Stretches child vertically */
+        justify-content: stretch; /* Stretches child horizontally */
       }
       iframe {
-        width: 100% !important;
-        height: 100% !important;
-        border: none;
+        flex: 1; /* Takes up all the space in the flex container */
+        border: none; /* Removes border */
+        width: 100%; /* Fallback for older browsers */
+        height: 100%; /* Fallback for older browsers */
       }
     </style>
+
   </head>
   <body>
     <iframe frameborder="0" src="https://itch.io/embed-upload/10286904?color=333333" allowfullscreen=""></iframe>
