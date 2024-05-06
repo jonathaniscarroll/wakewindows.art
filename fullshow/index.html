@@ -46,6 +46,18 @@
 
       setInterval(ensureCursor, 100); // Check every 100 milliseconds
 
+      window.onload = function() {
+    // Detect if the user is on Chrome and not on a mobile device
+    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isChrome && !isMobile) {
+        // Display an alert
+        alert("This site may not work correctly on Chrome on desktop. Please try another browser like Firefox or Safari.");
+    }
+};
+
+
     </script>
   </body>
 </html>
