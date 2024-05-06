@@ -30,16 +30,7 @@
   <body>
     <iframe width="100%" height="100%" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src="https://html-classic.itch.zone/html/10286904-979438/wake-full/index.html" id="game_drop"></iframe>
     <script>
-      window.onload = function() {
-        // Detect if the user is on Chrome and not on a mobile device
-        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        if (isChrome && !isMobile) {
-            // Display an alert
-            alert("This site may not work correctly on Chrome on desktop. Please try another browser like Firefox or Safari.");
-        }
-    };
+      
       function adjustIframe() {
         const iframe = document.querySelector('iframe');
         iframe.style.width = window.innerWidth + 'px';
@@ -54,7 +45,16 @@
         }
       }
 
-      setInterval(ensureCursor, 1000); // Check every 100 milliseconds
+      window.onload = function() {
+        // Detect if the user is on Chrome and not on a mobile device
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isChrome && !isMobile) {
+            // Display an alert
+            alert("This site may not work correctly on Chrome on desktop. Please try another browser like Firefox or Safari.");
+        }
+    };
 
       
 
