@@ -27,7 +27,6 @@
     </style>
   </head>
   <body>
-    <!-- Initially do not set the src attribute -->
     <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true"></iframe>
     <script>
       function adjustIframe() {
@@ -36,21 +35,29 @@
         iframe.style.height = window.innerHeight + 'px';
       }
 
-      function displayAlertForiOSChrome() {
+      function displayAlerts() {
         var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        var isChrome = /CriOS/.test(navigator.userAgent);
-        var isFirefox = /FxiOS/.test(navigator.userAgent);
+        var isChrome = /Chrome/.test(navigator.userAgent) && !/Edge/.test(navigator.userAgent);
+        var isFirefox = /Firefox/.test(navigator.userAgent);
+        var isOSX = /Mac OS/.test(navigator.userAgent);
+        var isDesktop = !/Mobile/.test(navigator.userAgent);
 
+        // Alert for iOS Chrome/Firefox
         if (isiOS && (isChrome || isFirefox)) {
           alert("This content works best in Safari. Please consider using Safari for a better experience.");
         }
 
-        // Load iframe content after the alert
+        // Additional alert for Chrome on macOS desktop
+        if (isOSX && isChrome && isDesktop) {
+          alert("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
+        }
+
+        // Load iframe content after the alerts
         document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980285/wake-full/index.html";
         adjustIframe(); // Adjust iframe size when displayed
       }
 
-      window.onload = displayAlertForiOSChrome;
+      window.onload = displayAlerts;
       window.onresize = adjustIframe;
     </script>
   </body>
