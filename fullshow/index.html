@@ -45,53 +45,53 @@
   </style>
 </head>
 <body>
-  <div id="warningModal">
+<!--   <div id="warningModal">
     <p id="modalText">This content works best in Safari. Please consider using Safari for a better experience.</p>
     <button id="modalButton">Dismiss</button>
-  </div>
-  <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src = "https://html-classic.itch.zone/html/10286904-980796/wake-full/index.html"></iframe>
+  </div> -->
+  <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src = "https://html-classic.itch.zone/html/10286904-980817/wake-full/index.html"></iframe>
   <script>
-    function adjustIframe() {
-      const iframe = document.getElementById('gameFrame');
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
-    }
+    // function adjustIframe() {
+    //   const iframe = document.getElementById('gameFrame');
+    //   iframe.style.width = "100%";
+    //   iframe.style.height = "100%";
+    // }
 
-    function displayModal(message) {
-      const modal = document.getElementById('warningModal');
-      const modalText = document.getElementById('modalText');
-      modalText.textContent = message;
-      modal.style.display = 'block'; // Show the modal
-    }
+    // function displayModal(message) {
+    //   const modal = document.getElementById('warningModal');
+    //   const modalText = document.getElementById('modalText');
+    //   modalText.textContent = message;
+    //   modal.style.display = 'block'; // Show the modal
+    // }
 
-    document.getElementById('modalButton').onclick = function() {
-      document.getElementById('warningModal').style.display = 'none';
-    };
+    // document.getElementById('modalButton').onclick = function() {
+    //   document.getElementById('warningModal').style.display = 'none';
+    // };
 
-    function checkBrowser() {
-      var userAgent = navigator.userAgent;
-      var isiOS = /iPad|iPhone|iPod/.test(userAgent);
-      var isSafariiOS = /Safari/.test(userAgent) && !/CriOS/.test(userAgent) && !/FxiOS/.test(userAgent);
-      var isChromeiOS = /CriOS/.test(userAgent);
-      var isChrome = /Chrome/.test(userAgent) && !/Edge/.test(userAgent);
-      var isOSX = /Macintosh/.test(userAgent);
-      var isDesktop = !/Mobile/.test(userAgent);
-      var isFirefox = /FxiOS/.test(userAgent);
+    // function checkBrowser() {
+    //   var userAgent = navigator.userAgent;
+    //   var isiOS = /iPad|iPhone|iPod/.test(userAgent);
+    //   var isSafariiOS = /Safari/.test(userAgent) && !/CriOS/.test(userAgent) && !/FxiOS/.test(userAgent);
+    //   var isChromeiOS = /CriOS/.test(userAgent);
+    //   var isChrome = /Chrome/.test(userAgent) && !/Edge/.test(userAgent);
+    //   var isOSX = /Macintosh/.test(userAgent);
+    //   var isDesktop = !/Mobile/.test(userAgent);
+    //   var isFirefox = /FxiOS/.test(userAgent);
 
-      if (isiOS && !isSafariiOS) {
-        displayModal("This content works best in Safari. Please consider using Safari for a better experience.");
-      }
+    //   if (isiOS && !isSafariiOS) {
+    //     displayModal("This content works best in Safari. Please consider using Safari for a better experience.");
+    //   }
 
-      if (isOSX && isChrome && isDesktop) {
-        displayModal("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
-      }
-    }
+    //   if (isOSX && isChrome && isDesktop) {
+    //     displayModal("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
+    //   }
+    // }
 
-    window.onload = function() {
-      checkBrowser();
-      adjustIframe();
-    };
-    window.onresize = adjustIframe;
+    // window.onload = function() {
+    //   checkBrowser();
+    //   adjustIframe();
+    // };
+    // window.onresize = adjustIframe;
   </script>
 </body>
 </html>
