@@ -34,39 +34,28 @@
         iframe.style.width = window.innerWidth + 'px';
         iframe.style.height = window.innerHeight + 'px';
       }
-      function showAlertOnce(key, message) {
-        
-          alert(message);
-        
-      }
 
       function displayAlerts() {
-        var userAgent = navigator.userAgent;
-        var isiOS = /iPad|iPhone|iPod/.test(userAgent);
-        var isChromeiOS = /CriOS/.test(userAgent);
-        var isSafariiOS = /Safari/.test(userAgent) && !/CriOS/.test(userAgent);
-        var isOSX = /Mac OS/.test(userAgent);
-        var isChromeDesktop = /Chrome/.test(userAgent) && !/Edge/.test(userAgent) && !/CriOS/.test(userAgent);
-        var isDesktop = !/Mobile/.test(userAgent);
+        var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        var isChrome = /Chrome/.test(navigator.userAgent) && !/Edge/.test(navigator.userAgent);
+        var isFirefox = /Firefox/.test(navigator.userAgent);
+        var isOSX = /Mac OS/.test(navigator.userAgent);
+        var isDesktop = !/Mobile/.test(navigator.userAgent);
 
-        // Alert for iOS Chrome
-        if (isiOS && isChromeiOS) {
-          showAlertOnce('iosChromeAlert', "This content works best in Safari. Please consider using Safari for a better experience.");
+        // Alert for iOS Chrome/Firefox
+        if (isiOS && (isChrome || isFirefox)) {
+          alert("This content works best in Safari. Please consider using Safari for a better experience.");
         }
 
-        // Alert for iOS Safari (if you want a specific alert for Safari)
-        
-
         // Additional alert for Chrome on macOS desktop
-        if (isOSX && isChromeDesktop && isDesktop) {
-          showAlertOnce('osxChromeAlert', "This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
+        if (isOSX && isChrome && isDesktop) {
+          alert("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
         }
 
         // Load iframe content after the alerts
-        document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980285/wake-full/index.html";
+        document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html";
         adjustIframe(); // Adjust iframe size when displayed
       }
-
 
       window.onload = displayAlerts;
       window.onresize = adjustIframe;
