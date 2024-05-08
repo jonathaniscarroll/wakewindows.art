@@ -75,8 +75,9 @@
       var isChrome = /Chrome/.test(userAgent) && !/Edge/.test(userAgent);
       var isOSX = /Macintosh/.test(userAgent);
       var isDesktop = !/Mobile/.test(userAgent);
+      var isFirefox = /Firefox/.test(navigator.userAgent);
 
-      if (isiOS && isChromeiOS) {
+      if (isiOS && (isChromeiOS || isFirefox)) {
         displayModal("This content works best in Safari. Please consider using Safari for a better experience.");
       }
 
