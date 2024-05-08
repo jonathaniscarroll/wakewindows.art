@@ -1,64 +1,95 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Wake Windows: The Witching Hour</title>
-    <style>
-      html, body {
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        display: flex;
-        align-items: stretch;
-        justify-content: stretch;
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Wake Windows: The Witching Hour</title>
+  <style>
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #warningModal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      background: white;
+      border: 1px solid black;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #modalButton {
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    iframe {
+      flex: 1;
+      border: none;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="warningModal">
+    <p id="modalText">This content works best in Safari. Please consider using Safari for a better experience.</p>
+    <button id="modalButton">Dismiss</button>
+  </div>
+  <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html"></iframe>
+  <script>
+    function adjustIframe() {
+      const iframe = document.getElementById('gameFrame');
+      iframe.style.width = window.innerWidth + 'px';
+      iframe.style.height = window.innerHeight + 'px';
+    }
+
+    function displayModal(message) {
+      const modal = document.getElementById('warningModal');
+      const modalText = document.getElementById('modalText');
+      modalText.textContent = message;
+      modal.style.display = 'block'; // Show the modal
+    }
+
+    document.getElementById('modalButton').onclick = function() {
+      document.getElementById('warningModal').style.display = 'none';
+    };
+
+    function checkBrowser() {
+      var userAgent = navigator.userAgent;
+      var isiOS = /iPad|iPhone|iPod/.test(userAgent);
+      var isChromeiOS = /CriOS/.test(userAgent);
+      var isChrome = /Chrome/.test(userAgent) && !/Edge/.test(userAgent);
+      var isOSX = /Macintosh/.test(userAgent);
+      var isDesktop = !/Mobile/.test(userAgent);
+
+      if (isiOS && isChromeiOS) {
+        displayModal("This content works best in Safari. Please consider using Safari for a better experience.");
       }
-      iframe {
-        flex: 1;
-        border: none;
-        width: 100%;
-        height: 100%;
+
+      if (isOSX && isChrome && isDesktop) {
+        displayModal("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
       }
-    </style>
-  </head>
-  <body>
-    <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html"></iframe>
-    <script>
-      function adjustIframe() {
-        const iframe = document.getElementById('gameFrame');
-        iframe.style.width = window.innerWidth + 'px';
-        iframe.style.height = window.innerHeight + 'px';
-      }
+    }
 
-      function displayAlerts() {
-        var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        var isChrome = /Chrome/.test(navigator.userAgent) && !/Edge/.test(navigator.userAgent);
-        var isFirefox = /Firefox/.test(navigator.userAgent);
-        var isOSX = /Mac OS/.test(navigator.userAgent);
-        var isDesktop = !/Mobile/.test(navigator.userAgent);
-
-        // Alert for iOS Chrome/Firefox
-        if (isChrome || isFirefox) {
-          alert("This content works best in Safari. Please consider using Safari for a better experience.");
-        }
-
-        // Additional alert for Chrome on macOS desktop
-        if (isOSX && isChrome && isDesktop) {
-          alert("This site may not work correctly on Chrome on macOS desktop. Please try another browser like Firefox or Safari for a better experience.");
-        }
-
-        // Load iframe content after the alerts
-        // document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html";
-        adjustIframe(); // Adjust iframe size when displayed
-      }
-
-      window.onload = displayAlerts;
-      window.onresize = adjustIframe;
-    </script>
-  </body>
+    window.onload = function() {
+      checkBrowser();
+      adjustIframe();
+    };
+    window.onresize = adjustIframe;
+  </script>
+</body>
 </html>
