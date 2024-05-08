@@ -71,13 +71,14 @@
     function checkBrowser() {
       var userAgent = navigator.userAgent;
       var isiOS = /iPad|iPhone|iPod/.test(userAgent);
+      var isSafariiOS = /Safari/.test(userAgent) && !/CriOS/.test(userAgent);
       var isChromeiOS = /CriOS/.test(userAgent);
       var isChrome = /Chrome/.test(userAgent) && !/Edge/.test(userAgent);
       var isOSX = /Macintosh/.test(userAgent);
       var isDesktop = !/Mobile/.test(userAgent);
       var isFirefox = /Firefox/.test(userAgent);
 
-      if (isiOS && (isChromeiOS || isFirefox)) {
+      if (isiOS && !isSafariiOS) {
         displayModal("This content works best in Safari. Please consider using Safari for a better experience.");
       }
 
