@@ -27,7 +27,7 @@
     </style>
   </head>
   <body>
-    <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true"></iframe>
+    <iframe id="gameFrame" frameborder="0" allowfullscreen="true" scrolling="no" allow="autoplay; fullscreen *; midi; gamepad; cross-origin-isolated" allowtransparency="true" webkitallowfullscreen="true" mozallowfullscreen="true" msallowfullscreen="true" src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html"></iframe>
     <script>
       function adjustIframe() {
         const iframe = document.getElementById('gameFrame');
@@ -43,7 +43,7 @@
         var isDesktop = !/Mobile/.test(navigator.userAgent);
 
         // Alert for iOS Chrome/Firefox
-        if (isiOS && (isChrome || isFirefox)) {
+        if (isChrome || isFirefox) {
           alert("This content works best in Safari. Please consider using Safari for a better experience.");
         }
 
@@ -53,7 +53,7 @@
         }
 
         // Load iframe content after the alerts
-        document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html";
+        // document.getElementById('gameFrame').src = "https://html-classic.itch.zone/html/10286904-980415/wake-full/index.html";
         adjustIframe(); // Adjust iframe size when displayed
       }
 
